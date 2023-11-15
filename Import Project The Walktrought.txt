@@ -1,0 +1,5 @@
+- Clone o Repositório na pasta
+- Abra o Eclipse
+- Acesse:
+  File >> Import >> Git >> Projects from Git (with smart import) >> Next >> Clone URI >> Next >>
+  O resto é uma grande sequência de next até chegar ao finish.
