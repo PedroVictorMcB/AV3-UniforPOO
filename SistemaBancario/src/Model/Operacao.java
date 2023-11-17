@@ -1,0 +1,9 @@
+package Model;
+
+public enum Operacao {
+
+	SALARIO,
+	CREDITO_TRANSFERENCIA,
+	DEBITO_CONTA,
+	DEBITO_TRANSFERENCIA
+}
