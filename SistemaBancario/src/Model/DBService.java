@@ -13,11 +13,11 @@ public class DBService {
 	
 	public DBService () {
 		try {
-			connection = DriverManager.getConnection("jdbc:sqlite:src/dataBase/WestBank.db");
+			connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\PEDRO\\Desktop\\Cursos\\UNIFOR\\ADS\\segundo-semestre\\POO\\AV3\\AV3-UniforPOO\\SistemaBancario\\src\\dataBase\\WestBank.db");
 			statement = connection.createStatement();
-			statement.setQueryTimeout(30); // Wait only 30 seconds to connect
+			statement.setQueryTimeout(30); //Wait only 30 seconds to connect
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			//TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	};
