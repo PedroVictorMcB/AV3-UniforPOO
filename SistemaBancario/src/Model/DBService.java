@@ -12,10 +12,15 @@ public class DBService {
 	private Statement statement = null;
 	
 	public DBService () {
+			
 		try {
-			connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\PEDRO\\Desktop\\Cursos\\UNIFOR\\ADS\\segundo-semestre\\POO\\AV3\\AV3-UniforPOO\\SistemaBancario\\src\\dataBase\\WestBank.db");
+			Class.forName("org.sqlite.JDBC");
+			connection = DriverManager.getConnection("jdbc:sqlite:src/dataBase/WestBank.db");
 			statement = connection.createStatement();
 			statement.setQueryTimeout(30); //Wait only 30 seconds to connect
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} catch (SQLException e) {
 			//TODO Auto-generated catch block
 			e.printStackTrace();
