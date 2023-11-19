@@ -21,11 +21,11 @@ public class TransacaoController {
 		this.transacoes = transacoes;
 	};
 	
-	public void addTransacao(Transacao transacoes) {
+	public void addTransacaoT(Transacao transacoes) {
 		
 	};
 	
-	public void removeTransacao(Transacao transacao) {
+	public void removeTransacaoT(Transacao TransacaoT) {
 		
 	};
 }
