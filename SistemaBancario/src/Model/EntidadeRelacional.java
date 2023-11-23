@@ -4,8 +4,6 @@ public abstract class EntidadeRelacional {
 
 	private int id;
 
-	
-	
 	public EntidadeRelacional(int id) {
 		this.id = id;
 	}
