@@ -28,6 +28,10 @@ public class CoreController implements IContaCorrente {
 		this.contaCorrente.setSaldo(saldo);
 	}
 	
+	public int getContaCorrenteNum() {
+		return this.contaCorrente.getId();
+	}
+	
 	public List<Transacao> extrato(){
 		return db.queryTransacoes(contaCorrente.getId());
 	}
