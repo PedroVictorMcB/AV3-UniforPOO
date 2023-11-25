@@ -77,16 +77,13 @@ public class DBService {
 	
 	public List<Transacao> queryTransacoes(int contaCorrenteId, Date inicio, Date fim){
 		try {
-			String teste02 = "SELECT t.* FROM conta_corrente cc "
-					+ "INNER JOIN transacao t ON cc.id=t.conta_corrente_id "
-					+ "WHERE cc.id=" + contaCorrenteId + " AND t.data_transacao >= " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(inicio)
-					+ " AND t.data_transacao <= " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(fim);
-			
-			System.out.println(teste02);
-			ResultSet rs = statement.executeQuery("SELECT t.* FROM conta_corrente cc "
-					+ "INNER JOIN transacao t ON cc.id=t.conta_corrente_id "
-					+ "WHERE cc.id=" + contaCorrenteId + " AND t.data_transacao >= " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(inicio)
-					+ " AND t.data_transacao <= " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(fim));
+			ResultSet rs = statement.executeQuery(
+				"SELECT t.* FROM conta_corrente cc "
+				+ "INNER JOIN transacao t ON cc.id=t.conta_corrente_id "
+				+ "WHERE cc.id=" + contaCorrenteId + " AND t.data_transacao >= \"" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(inicio)
+				+ "\" AND t.data_transacao <= \"" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(fim) 
+				+ "\""
+			);
 			ArrayList<Transacao> transacoesOutput = new ArrayList<Transacao>();
 			
 			while (rs.next()) {

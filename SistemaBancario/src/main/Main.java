@@ -1,26 +1,36 @@
 package main;
 
-import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
-import Model.ContaCorrente;
-import Model.DBService;
 import Model.Transacao;
+import controller.CoreController;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
 		
-		DBService db = new DBService();
-		ContaCorrente contaCorrente = db.queryContaCorrente(1);
+//		DBService db = new DBService();
+//		ContaCorrente contaCorrente = db.queryContaCorrente(1);
 		
-		System.out.println("Seu saldo é " + contaCorrente.getSaldo() + " e seu id é " + contaCorrente.getId());
+		CoreController controller = new CoreController(1);
 		
-		List<Transacao> transacoes = db.queryTransacoes(1, new Date(2023, 11, 10), new Date(2023, 11, 26));
-		for (Transacao t: transacoes) {
-			System.out.println("ID: " + t.getId() + " VALOR: " + t.getValor() + " OPERACAO: " + t.getOperacao() + " ORIGEM: " + t.getOrigem() + " DESTINO: " + t.getDestino()
-			+ " DATA TRANSACAO: " + t.getDataTransacao());
+		System.out.println("Seu saldo é " + controller.getSaldo());
+		
+		try {
+			List<Transacao> extrato = controller.extrato(new SimpleDateFormat("yyyy-MM-dd").parse("2023-11-10"), new SimpleDateFormat("yyyy-MM-dd").parse("2023-11-26"));
+					//db.queryTransacoes(1, new Date(2023, 11, 10), new Date(2023, 11, 26));
+			for (Transacao t: extrato) {
+				System.out.println(
+						"ID: " + t.getId() + " VALOR: " + t.getValor() + " OPERACAO: " + t.getOperacao() + " ORIGEM: " + t.getOrigem() 
+						+ " DESTINO: " + t.getDestino()
+						+ " DATA TRANSACAO: " + t.getDataTransacao());
+			}
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 }
