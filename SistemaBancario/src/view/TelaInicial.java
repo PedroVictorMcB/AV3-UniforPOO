@@ -6,8 +6,6 @@ import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -20,8 +18,8 @@ import javax.swing.border.EmptyBorder;
 
 public class TelaInicial extends Tela {
 
-	private int contaCorrenteId;
 	private boolean isSaldoVisivel;
+	private int newID;
 	
 	public TelaInicial (int contaCorrenteId) {
 		super(contaCorrenteId);
@@ -36,12 +34,25 @@ public class TelaInicial extends Tela {
 			this.isSaldoVisivel = true;
 		}
 	}
+	
+	private void goToExtratoHandler() {
+		TelaExtrato telaExtrato = new TelaExtrato(this.contaCorrenteId);
+		telaExtrato.render();
+		telaExtrato.setPosition(this.frame.getLocation());
+		this.frame.setVisible(false);
+	}
+	
+	private void trocaContaHandler(int contaContaConrrenteId) {
+		//recebe um ID e troca o valor de contaCorrenteId para este ID
+		
+		
+	}
 
 	@Override
 	public void render() {
-		JFrame frame = new JFrame("WestBankApp - Tela Principal");
+		this.frame = new JFrame("WestBankApp - Tela Principal");
 
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel borderLayoutPanel = new JPanel(new BorderLayout());
 		JPanel boxLayoutPanel = new JPanel();
 		boxLayoutPanel.setLayout(new BoxLayout(boxLayoutPanel, BoxLayout.Y_AXIS));
@@ -91,16 +102,16 @@ public class TelaInicial extends Tela {
         borderLayoutPanel.add(boxLayoutPanel, BorderLayout.LINE_START);
         
         JButton extratoBtn = new JButton("Extrato");
+        extratoBtn.addActionListener(e -> {
+        	this.goToExtratoHandler();
+        });
         borderLayoutPanel.add(extratoBtn, BorderLayout.PAGE_END);
         
         
-        frame.getContentPane().add(borderLayoutPanel, BorderLayout.CENTER);
+        this.frame.getContentPane().add(borderLayoutPanel, BorderLayout.CENTER);
         
-		frame.setSize(400, 600);
+		this.frame.setSize(800, 600);
 		
-		
-		
-		//5. Show it.
-		frame.setVisible(true);
+		this.frame.setVisible(true);
 	}
 }
